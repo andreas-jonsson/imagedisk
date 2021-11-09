@@ -7,146 +7,106 @@ in the image file. This allows ImageDisk to work with virtually any soft-
 sectored diskette format that is compatible with the PC's type 765 floppy
 diskette controller and drives.
 
-ImageDisk performs direct hardware access to the floppy disk controller
-chip, and therefore cannot run under operating systems which do not
-permit application programs such access. These include Windows NT,
-2000 and XP. I strongly recommend running the program under pure DOS.
+The ImageDisk Disk Image File (.IMD) format specification has been released
+into the public domain and I wish to encourage others to write software which
+creates and manipulates .IMD files, especially under other operating and/or
+host systems.
 
-I have placed most of the information you should need about the program
-into a simple help system which will activate when you run IMD. Please
-be sure to read the LICENSE and GENERAL NOTES before you use ImageDisk.
+The executable ImageDisk program, utilities and complete documentation are
+available in another archive - for general information on the program, please
+refer to this material.
 
-Content of this archive:
 
-    README.TXT    - This file
-    HELP.TXT      - Hints about common problems
-    IMD.TXT       - ImageDisk documentation
-    IMD.COM       - ImageDisk program
-    IMD.HLP       - ImageDisk HELP file (used by IMD.COM)
-    IMDA.COM      - ImageDisk Analyzer
-    IMDU.COM      - ImageDisk Utility **
-    IMDV.COM      - ImageDisk Viewer
-    TESTFDC.COM   - Utility to evaluate floppy controller
-    BIN2IMD.COM   - Binary to ImageDisk conversion utility
-    TD02IMD.COM   - Teledisk to ImageDisk conversion (direct)
-    DMK2IMD.COM   - DMK to ImageDisk conversion utility
-    ANY2IMD.COM   - ANY format to ImageDisk conversion (via floppy)
-    IMDCMT.BAT    - Preset .IMD comment from text file
-    IMDEDT.BAT    - Extract, Edit and Replace .IMD comment
+ImageDisk Source Code
+---------------------
+This archive contains the full ImageDisk source code, including the main
+IMD program as well as the AMDA, IMDU, IMDV, TESTFDC, BIN2IMD, TD02IMD,
+DMK2IMD and ANY2IMD utilities.
 
-** Note: IMDU replaces IMDAM in earlier versions of ImageDisk.
+
+                            Terms and Condtiions
+
+The ImageDisk source code consisting of the files IMD.C, IMDA.C IMDU.C,
+IMDV.C, TESTFDC.C, BIN2IMD.C, TD02IMD.C, DMK2IMD.C and ANY2IMD.C is copyright
+material, and is licensed under the following terms and conditions:
+
+-   No support, technical or otherwise is offered for the source code.
+
+-   Use of source code is entirely at your own risk. The author makes no
+    guarantee of the suitability of this code for any particular purpose.
+
+-   The code is NOT "open source", and is NOT being offered under GPL or
+    any other "open source" license. The code is for personal use only.
+
+-   You may use the ideas and algorithms expressed within this code in
+    your own software with no restriction.
+
+-   You may NOT distribute this source code or significant portions
+    thereof in any form. You may direct third parties to my web site
+    where I will maintain the latest version of the source code.
+
+All rights and permissions not listed above are explicitly reserved by the
+author.
+
+Please note:
+
+The main intentions of these license terms are:
+
+-   To avoid a high support load on myself.
+
+-   To avoid multiple/conflicting public versions of the PC/DOS
+    ImageDisk package.
+
+-   To allow me to remain informed on other ImageDisk developments.
+
+-   To insure the program remains non-commercial.
+
+If you wish to enhance the PC/DOS version of ImageDisk or develop it for
+another platform, please contact me - I am very accomodating.
+
+
+Additional notes:
+-----------------
+This code was developed using my own Micro-C/PC compiler. Micro-C/PC is
+available free from my commercial site www.dunfield.com. This is not a
+mainstream toolset and some features and library functions work differently
+than you may expect. ImageDisk makes use of non-standard features and library
+functions and will not compile under a different toolset without significant
+modification. Please do not contact me for assistance in porting this code to
+another toolset - I maintain the PC/DOS version of ImageDisk for my tools only.
+
+If you do compile ImageDisk under Micro-C/PC, please note that some assemblers
+(notably MASM) cannot handle the large output file it generates. You will
+either have to break the program down into smaller source files, or use
+a different assembler (Borlands TASM 1.0 works well for me).
+
+The source code files are written assuming tabs occuring at 4 character
+intervals - these will display with incorrect spacing if you edit the files
+with an editor set to the standard MSDOS tabs at 8 character intervals.
+For those who do not have an editor which can handle tabs at 4 character
+intervals, I have included a program REMTAB.COM which will replace all tabs
+in the source files with the correct number of spaces to retain proper
+formatting.
+
+ImageDisk is a "created by necessity" program which deals with a difficult
+problem (accessing non-standard floppy disk formats on widely varying PC
+hardware). It was initially hacked together in a weekend, and subsequently
+bludgeoned into it's current form over many months of my own experience with
+it as well as user reports of it's strengths and weaknesses. Within the source
+code you will find gotos, casted pointers, inline assembly language and other
+things some people don't like - if you find these offensive, strongly disagree
+with my coding style, or otherwise have difficulty with the source code -
+please delete it now. If you have legitimate improvements, or bug reports -
+I'm all ears, but I have neither time nor desire to haggle over matters of
+personal opinion.
 
 Enjoy,
+
 Dave Dunfield
-www.dunfield.com
 
+To contact me, see the "contact me" link on my classic computers website:
+    www.classiccmp.org/dunfield
 
-This ImageDisk package is  Copyright 2005-2012  Dave Dunfield, who
-grants the following free license for non-commercial use.  You may:
+or use the "technical support" link on my commercial website:
+    www.dunfield.com
 
-- Use the package for personal/hobby purposes for as long as you
-  wish, on as many computers as you wish.
-
-- Redistribute copies of the package provided none of the copyright
-  material has been altered or omitted from the distributed version.
-  Additions to the package must be clearly marked as such.
-
-- Create/manipulate .IMD files with no restriction.  The disk image
-  file format specification is hereby placed into the public domain.
-
-All rights and permissions not listed above are explicitly reserved
-by the author.
-
-Use of this software is entirely at your own risk. The author makes
-no guarantee of the suitability of this software for any particular
-purpose.
-
-Copyright law prohibits duplication of material so protected. It is
-your responsibility to determine the legality of any particular use
-of this software. This package is NOT intended as a means to bypass
-software copy protection.
-
-By using this software, you accept all responsibility of any kind
-which may result from such use.   You agree to indemnify and hold
-harmless the author and his agents from any action which may arise
-from your use of the software.
-
-
-Revision history:
------------------
-1.00 = Inital public release
-1.01 = Added Sector Cylinder/Head maps for disks with non-standard C/H
-       values. Minor fixes and help update.
-1.02 = Fully independant side0/side1 analysis.
-       Fix reanalyze corrupting sector numbering map (major bug)
-       Fix IMDAM to find sectors in "short" images.
-       Major code cleanup, numerous minor bugs fixed and enhancements.
-1.03 = Added options to control read/write interleave.
-       Added low-level format function.
-       Fix to recal twice to handle 765's limited to 77 tracks.
-       Fix to timeout on hung FDC
-       Update IMDAM to insert missing/excluded tracks from merge.
-1.04 = Various updates to support PC/XT (8088)
-       Fix to insure FDC interrupt is enabled before command begins.
-       Fix to handle BIOSs which constantly turn off floppies.
-       Fix to write with different interleave (mixed up sectors).
-       Fix to end of disk detection on side-1.
-       Reset disk system on exit.
-1.05 = Fix to interleave logic (could mix up Cylinder/Head mapping).
-       Improvements to HELP system.
-       Rename IMDAM to IMDU (IMageDisk Utility) and add capabilities:
-         - Handle larger tracks
-         - Remove specific tracks/sides
-         - Convert image to raw binary sector dump
-         - Translate data rates within image
-         - reGenerate tracks with new interleave factor
-         - Append, Replace and Extract comment record
-1.06 = Added 'B' to silence beeper in Alignment/Test function
-       Fix cursor update in direct file entry
-       Updated HELP to include F1=Back and jump-to-link on first character
-       Updated HELP content
-       Update IMDU with options to:
-         - Expand compressed sectors to full data
-         - Compress "all-same" sectors
-         - Ignore mode difference in compare/merge
-1.07 = Fix DMA segment allocation
-       Added 'FWRZD' display to align/test function
-       Added 'P', 'F', 'B' and 'W' commands to align/test function
-1.08 = Added BIN2IMD utility
-       Added IMD.TXT manual/documentation
-       Improved IMD file selection manual entry
-       Fix IMDU comment append/replace to preserve LFCR in files
-       Fix minor cosmetic defects in help and displays
-     + 1.08a: Fix bug in new file select functions.
-1.09 = Added support for 4 drives/FDC and second controller
-       Added 'I' align/test function
-1.10 = Added support for "Deleted-Data" address marks.
-1.11 = Improved gap calculation for unknown formats
-1.12 = Fix gap calculation for single-density
-1.13 = Fix gap calculation for very high density/packed tracks
-       Fix reading full-length comment lines.
-1.14 = Add '$' prefix for command files in home directory, and
-       auto-run IMD.CMD at startup.
-       Added IMDV utility
-1.15 = Add manual TG43 control option
-       Add TG43 control to Format function
-       Clean up handling of RPM function when disk data lost
-       Fixes and enhancements to IMDV
-1.15a= Added TD02IMD, and TESTFDC utilities
-1.16 = Fix DMA problem on noisy bus
-       Allow multi-error messages (eg: format)
-       Update data entry to highlight input fields
-       Added DMK2IMD amd ANY2IMD utilities
-1.17 = Add sector types for bad-sectors and option to record bad sectors
-       Scan entire disk on "Full analysis"
-       26JUL07 Fix bug in write causing corrupted disks
-       27JUN08 Add warnings to TD02IMD, allow non-0/1 head value
-       05AUG08 Fix DMK2IMD data for single-density
-1.18 = Add E)rase command
-       Minor internal processing improvements
-       Add IMDA utility
-       Add IMDCMT utility (batch file calling IMDU)
-       Add IMDEDT utility (batch file calling IMDU)
-       DMK2IMD add work-around for bad-AM images produced by some emulators.
-       Update .IMD file specification with extension for mixed sector-sizes.
-       Minor documentation and help file updates.
